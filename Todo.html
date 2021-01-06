@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+<body style="color: #0c0f66;;">
+    <div id="todo" style="display: flex; flex-direction: column; align-items: center;width: 100%;">
+        <h1>Todo List</h1>
+        <form @submit.prevent="addTodo(newItem)">
+            <input type="text" v-model="newItem" placeholder="Add Todo" required style="padding: 0.5rem;">
+            <button type="submit" style="color: white;background-color: #0c0f66;padding: 0.5rem;">Add</button>
+        </form>
+        <hr style="height: 2px;color: #0c0f66; background-color: #0c0f66;width: 100%;">
+        <h1>Your Todos...</h1>
+        <div v-if="todoList.length <= 0">
+            <h4  style="color: red;">No Todos</h4>
+        </div>
+        <div v-else style="width: 100%;">
+            <div v-for="(item,i) in todoList" :key="i" style="width: 90%;display: flex;justify-content: space-between;background-color:#171caa08;margin:20px auto;padding: 10px;">
+                <label style="text-align: left;color: #0c0f66;font-size: 30px;">{{item }}</label>
+                <button @Click="deleteTodo(i)" style="background-color: red;padding: 0.5rem;border-radius: 5px;color: white;">Done</button>
+            </div>
+        </div>
+        
+    </div>
+     <script src="main.js"> 
+    </script>
+</body>
+</html>
